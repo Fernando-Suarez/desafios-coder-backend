@@ -9,7 +9,7 @@ class Usuario{
         return console.log(`${this.nombre} ${this.apellido}`)
     }
     addMascota(mascota){
-        this.mascotas.push(mascota)
+        return this.mascotas.push(mascota)
     }
     countMascotas(){
         return console.log(this.mascotas.length)
@@ -18,7 +18,7 @@ class Usuario{
         this.libros.push({nombre: nombreLibro, autor: autor});
     }
     getBookNames(){
-        return this.libros.map(Element => console.log(Element.nombre))
+        return console.log(this.libros.map(Element => Element.nombre))
     }
 }
 
