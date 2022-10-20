@@ -1,1 +1,5 @@
-{"nombre":"juan","edad":34,"id":1}
+{
+  "nombre": "juan",
+  "edad": 35,
+  "id": 1
+}

@@ -15,14 +15,16 @@ const fecha = Date();
 fs.writeFileSync('./fyh.txt', `${fecha}`);
 
 }catch (error){
-    console.log(error);
+    throw new Error('no se puede escribir el archivo')
 }
 
 // lee el archivo creado y lo muestra en consola
 
 try {
     const data = fs.readFileSync('./fyh.txt','utf-8');
-    console.log(data)
+    console.log(data);
 } catch (error) {
-    console.log(error)
+    throw new Error ( 'no se puede leer el archivo');
+    
+    
 }

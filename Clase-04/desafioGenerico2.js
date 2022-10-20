@@ -11,20 +11,8 @@
 // Ayuda:
 // Considerar el uso de JSON.stringify(info.contenidoObj, null,2) para preservar el formato de representación del objeto en el archivo.
 
-// se crea un objeto y se pasa a texto plano
-
 const fs = require('fs');
 
-const listaObj = {nombre:'Fernando', edad: 34, id: 1};
-const info = JSON.stringify(listaObj);
-
-
-// se crea el archivo info.txt con el objeto dentro
-try {
-    fs.promises.writeFile('./info.txt', `${info}`,)
-} catch (error) {
-    console.log(error)
-}
 
 const programa = () => {
     
@@ -32,14 +20,14 @@ const programa = () => {
 
     fs.promises.readFile('./info.txt','utf-8')
     .then(contenidoInfo => {
-       const contenido = JSON.parse(contenidoInfo);
+    const contenido = JSON.parse(contenidoInfo);
 
        // se muestra el contenido en la consola
         console.log(contenido);
 
         // se modifica el contenido del objeto y se vuelve a grabar
         contenido.nombre = 'juan'
-        fs.promises.writeFile('./info.txt',`${JSON.stringify(contenido)}`);
+        fs.promises.writeFile('./info.txt',`${JSON.stringify(contenido,null,2)}`);
 
 
         // se controla si quedo bien grabado
