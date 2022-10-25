@@ -53,9 +53,9 @@ class Contenedor {
             const productos = await this.getAll();
             const productoId = productos.find(producto => producto.id === id );
             if(productoId){
-                return console.log(productoId);
+                return productoId;
             }else {
-                return console.log(null);
+                return null;
             } 
         } catch (error) {
             throw new Error ('No se puedo obtener el elemento', error);
@@ -107,18 +107,20 @@ class Contenedor {
 }
 
 // Instancia a la Clase
-const prueba = new Contenedor('./productos.txt');
+//const prueba = new Contenedor('./productos.txt');
 
 
 // Test
 
-const test = async () => {
-    //await prueba.getAll();
+//const test = async () => {
+    //console.log(await prueba.getAll());
     //await prueba.save({title: 'producto', price: 1500});
     //await prueba.deleteAll();
-    //await prueba.getById(2);
+    //console.log(await prueba.getById(2));
     //await prueba.deleteById(2);
     
-}
+//}
 
-test();
+//test();
+
+module.exports = Contenedor;
