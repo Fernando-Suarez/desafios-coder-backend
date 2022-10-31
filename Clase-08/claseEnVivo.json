@@ -1,0 +1,17 @@
+[   
+    {
+        "id": "1",
+        "nombre": "fernando",
+        "domicilio": "CORDOBA"
+    },
+    {
+    "id": "2",
+    "nombre": "camila",
+    "domicilio": "CABA"
+    },
+    {   
+    "id": "3",
+    "nombre": "daniel",
+    "domicilio": "FORMOSA"
+}
+]
