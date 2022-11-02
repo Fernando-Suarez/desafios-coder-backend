@@ -9,12 +9,16 @@ const routerUsuarios = Router();
 // Multer  
 const multer = require('multer');
 
-
+//acepta formato json
 app.use(express.json());
+
 app.use(express.urlencoded({ extended: true }));
 
+//Busca dentro de la direccion base la carpeta public y trae el archivo
 app.use('/public', express.static(__dirname + '/public'));
-console.log(__dirname); 
+console.log(__dirname);
+
+//
 app.listen(PORT, () => console.log(`Servidor http escuchado en el puerto http://localhost:${PORT}`)); 
 
 
@@ -47,7 +51,7 @@ const storage = multer.diskStorage({
 
 // GET formulario
 app.get('/formulario', (req , res) => {
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/claseEnVivo.html');
 });
 
 // POST formulario

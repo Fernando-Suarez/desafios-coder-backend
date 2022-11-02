@@ -1,0 +1,23 @@
+[
+  {
+    "nombre": "Elder Ring",
+    "precio": 1500,
+    "categoria": "pc",
+    "thumbnail": "www.google.com",
+    "id": 1
+  },
+  {
+    "nombre": "Spiderman",
+    "precio": 8600,
+    "categoria": "pc",
+    "thumbnail": "www.google.com",
+    "id": 2
+  },
+  {
+    "nombre": "God of War Ragnarok",
+    "precio": "3000",
+    "categoria": "PC",
+    "thumbnail": "www.google.com",
+    "id": 3
+  }
+]
