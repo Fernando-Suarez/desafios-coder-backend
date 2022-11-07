@@ -1,0 +1,26 @@
+<h1>Listado de productos</h1>
+
+    {{#if hayProductos}}
+    <div>
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Categoria</th>
+                <th>Foto</th>
+            </tr>
+            {{#each products}}
+            <tr>
+                <td>{{this.nombre}}</td>
+                <td>{{this.precio}}</td>
+                <td>{{this.categoria}}</td>
+                <td><img width="50" src={{this.thumbnail}}/><td> 
+            </tr>
+            {{/each}}
+        </table>    
+    </div>
+    {{else}}
+    <h2>No se Encontraron Productos</h2>
+    {{/if}}
+    <br>
+    <a href="/">cargar un nuevo producto</a>

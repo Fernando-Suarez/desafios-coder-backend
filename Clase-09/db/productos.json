@@ -1,0 +1,51 @@
+[
+  {
+    "nombre": "SpiderMan",
+    "precio": "1500",
+    "categoria": "PS4",
+    "thumbnail": "https://i.postimg.cc/nLK4pfDp/spiderman.jpg",
+    "id": 1
+  },
+  {
+    "nombre": "SpiderMan",
+    "precio": "1500",
+    "categoria": "PS4",
+    "thumbnail": "https://i.postimg.cc/nLK4pfDp/spiderman.jpg",
+    "id": 2
+  },
+  {
+    "nombre": "SpiderMan",
+    "precio": "1500",
+    "categoria": "PS4",
+    "thumbnail": "https://i.postimg.cc/nLK4pfDp/spiderman.jpg",
+    "id": 3
+  },
+  {
+    "nombre": "SpiderMan",
+    "precio": "1500",
+    "categoria": "PS4",
+    "thumbnail": "https://i.postimg.cc/nLK4pfDp/spiderman.jpg",
+    "id": 4
+  },
+  {
+    "nombre": "SpiderMan",
+    "precio": "1600",
+    "categoria": "PS4",
+    "thumbnail": "https://i.postimg.cc/nLK4pfDp/spiderman.jpg",
+    "id": 5
+  },
+  {
+    "nombre": "SpiderMan",
+    "precio": "1600",
+    "categoria": "PS4",
+    "thumbnail": "https://i.postimg.cc/nLK4pfDp/spiderman.jpg",
+    "id": 6
+  },
+  {
+    "nombre": "SpiderMan",
+    "precio": "4555",
+    "categoria": "PS4",
+    "thumbnail": "https://i.postimg.cc/nLK4pfDp/spiderman.jpg",
+    "id": 7
+  }
+]
