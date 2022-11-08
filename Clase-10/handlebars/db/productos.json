@@ -1,0 +1,16 @@
+[
+  {
+    "nombre": "SpiderMan",
+    "precio": "6000",
+    "categoria": "PS4",
+    "thumbnail": "https://i.postimg.cc/nLK4pfDp/spiderman.jpg",
+    "id": 1
+  },
+  {
+    "nombre": "Elder Rings",
+    "precio": "4500",
+    "categoria": "PS4",
+    "thumbnail": "https://i.postimg.cc/BZpKmCx7/elder-Ring.jpg",
+    "id": 2
+  }
+]
