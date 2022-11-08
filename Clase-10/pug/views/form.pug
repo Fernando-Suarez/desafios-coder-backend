@@ -1,0 +1,20 @@
+extends layouts/index.pug
+
+block form
+    form(action="/productos" method="post")
+        div
+            label(for="nombre")  Nombre
+            input(type="text" name="nombre" required="")        
+        div
+            label(for="precio")  Precio
+            input(type="text" name="precio" required="")
+        div
+            label(for="categoria")  Categoria
+            input(type="text" name="categoria" required="")        
+        div
+            label(for="thumbnail") Link imagen
+            input(type="text" name="thumbnail" required="")
+        div
+            input(type="submit")
+    a(href="/productos") Listado de productos
+           

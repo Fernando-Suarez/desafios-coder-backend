@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+<body>
+    <h1>Listado de productos</h1>
+
+    <% if(hayProductos){ %>
+        <div>
+            <table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Categoria</th>
+                    <th>Foto</th>
+                </tr>
+                <% products.forEach(producto => { %>
+                    <tr>
+                        <td><%=producto.nombre%></td>
+                        <td><%=producto.precio%></td>
+                        <td><%=producto.categoria%></td>
+                        <td><img width="50" src=<%=producto.thumbnail%>/></td>
+                    </tr>
+                    <%})%> 
+            </table>
+        </div>
+    <%} else { %>
+        <h2>No se Encontraron Productos</h2>
+        <% } %>
+        <br />
+        <a href="/">cargar un nuevo producto</a>
+</body>
+<%- include ('../partials/footer'); %>
+</html>

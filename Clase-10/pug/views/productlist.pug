@@ -1,0 +1,24 @@
+extends layouts/index.pug 
+block productlist
+
+    h1 Listado de productos
+
+    if hayProductos
+        div
+            table
+                tr
+                    th Nombre
+                    th Precio
+                    th Categoria
+                    th Foto        
+                each product in products
+                    tr                 
+                        td=product.nombre
+                        td=product.precio
+                        td=product.categoria
+                        td 
+                            img(width="50" src=product.thumbnail)                            
+    else
+        h2 No se Encontraron Productos        
+    br
+    a(href="/") cargar un nuevo producto

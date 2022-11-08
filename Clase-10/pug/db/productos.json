@@ -1,0 +1,17 @@
+[
+  {
+    "nombre": "SpiderMan",
+    "precio": "2300",
+    "categoria": "PS4",
+    "thumbnail": "https://i.postimg.cc/nLK4pfDp/spiderman.jpg",
+    "id": 1
+  },
+  {
+    "nombre": "SpiderMan",
+    "precio": "2300",
+    "categoria": "PS4",
+    "thumbnail": "https://i.postimg.cc/nLK4pfDp/spiderman.jpg",
+    "enviar": "Enviar consulta",
+    "id": 2
+  }
+]
