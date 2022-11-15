@@ -1,24 +1,29 @@
+//https://socket.io/docs/v4/server-initialization/
 const express = require('express');
 const app = express();
-const http = require('http');
-const PORT = process.env.PORT || 8080;
-const server = http.createServer(app);
 
-app.use(express.static(__dirname + '/public'));
+//IMPLEMENTACION
+const httpServer = require('http').createServer(app);
+const io = require('socket.io')(httpServer);
+
+httpServer.listen(8080, () => console.log('SERVER ON http://localhost:8080'));
+
 app.use(express.json());
+app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 
-//* IMPLEMENTACION DE SOCKET.IO
+app.get('/', (req, res) => {
+	res.sendFile('index.html', { root: __dirname });
+});
 
-const { Server } = require('socket.io');
-const io = new Server(server);
+const msgs = [];
 
 io.on('connect', (socket) => {
-	console.log('un usuario se ha conectado');
+	console.log('nuevo usuario conectado');
+	// atajo los msgs que me manda el front
+	socket.on('msg', (data) => {
+		msgs.push({ ...data });
+		io.sockets.emit('msg-list', msgs);
+	});
+	socket.emit('msg', 'hola front!');
 });
-
-app.get('/', (req, res) => {
-	res.sendFile(__dirname + '/index.html');
-});
-
-server.listen(PORT, () => console.log(`http://localhost:${PORT}`));

@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+body {
+    background-color: #cececdc7;
+}
+h1 {
+    color: #420099;
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+}
+
+    /*navbar*/
+
+.navbar {
+    width: 80%;
+    margin: auto;
+    padding: 35px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+    
+
+}   
+.navbar li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 10px;
+    
+    
+}
+
+.navbar li a {
+    text-decoration: none;
+    color: #051a41;
+    
+}
+
+    /*product list*/
+.container {
+   display: flex;
+   align-content: center;
+   justify-content: center;
+}
+
+.content-table {
+    border-collapse: collapse;
+    max-width: 400px;
+    font-size: 1.5em;
+    margin: 25 0;
+    border-radius:  5px 5px 0 0 ;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table td,
+.content-table th {
+    padding: 20px;
+    
+}
+
+.content-table td {
+    background-color: #0c0b0b;
+    color: #dddddd;
+}
+
+.content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.not-found {
+    background-color: #cfcf2fc7;
+    height: 70px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.not-found h2 {
+    font-size: 1.2em;
+    color: rgb(168, 140, 106);
+    font-weight: bold;
+    padding: 20px;
+    text-align: center;
+
+}
+
+/* Form */
+
+form {
+    margin: 0 auto;
+    width: 400px;
+    background-color: #ffffff;
+    color: #999999;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1em;
+    
+}
+
+input {
+    border: solid 1px #cccccc;
+    outline: none;
+    padding: 10px;
+    width: 370px;
+    
+}
+
+input:focus {
+    border-color: #009879;
+}
+
+.submit-button {
+    background-color: #00ac42;
+    color: #ffffff;
+    font-size: 0.8em;
+    font-weight: bold;
+}

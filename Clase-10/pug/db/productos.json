@@ -13,5 +13,12 @@
     "thumbnail": "https://i.postimg.cc/nLK4pfDp/spiderman.jpg",
     "enviar": "Enviar consulta",
     "id": 2
+  },
+  {
+    "nombre": "Elder Rings",
+    "precio": "5000",
+    "categoria": "PC",
+    "thumbnail": "https://i.postimg.cc/BZpKmCx7/elder-Ring.jpg",
+    "id": 3
   }
 ]

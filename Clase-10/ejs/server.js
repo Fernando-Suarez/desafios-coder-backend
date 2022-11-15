@@ -12,6 +12,7 @@ app.use('/public', express.static(__dirname + '/public'));
 // ejs
 
 app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views/pages');
 
 //Routes
 
@@ -20,15 +21,14 @@ app.use('/productos', routerProductos);
 //Ruta Raiz con Formulario
 
 app.get('/', (req, res) => {
-    res.render('./pages/form');
-    
+	res.render('form');
 });
 
 // GET productos
 
 routerProductos.get('/', async (req, res) => {
 	const productos = await contenedor.getAll();
-    res.render('./pages/productlist', {
+	res.render('productlist', {
 		products: productos,
 		hayProductos: productos.length,
 	});
