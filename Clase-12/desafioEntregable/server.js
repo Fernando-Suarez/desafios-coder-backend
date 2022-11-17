@@ -1,102 +1,78 @@
-
+//* modulos
 
 const express = require('express');
 const Contenedor = require('./api/contenedor.js');
-const contenedor = new Contenedor('./db/productos.json');
-const {Router} = express;
-const routerProductos = Router();
-const { engine } = require('express-handlebars'); 
+// const { engine } = require('express-handlebars');
+const { Server: HTTPServer } = require('http');
+const { Server: IOServer } = require('socket.io');
 
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
-
+//* Instancias
 const app = express();
+
+const contenedor = new Contenedor('./db/productos.json');
+const contenedorMensajes = new Contenedor('./db/mensajes.json');
+const HTTPserver = new HTTPServer(app);
+const io = new IOServer(HTTPserver);
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+//* Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/public', express.static(__dirname + '/public'));
 
-
-// Handlebars
-
-app.set('view engine', 'hbs');
-app.set('views', './views');
-app.engine(
-  'hbs',
-  engine({
-    extname: '.hbs',
-    defaultLayout:'index.hbs',
-    layoutsDir: __dirname + '/views/layouts',
-    partialsDir: __dirname + '/views/partials',
-  })
-);
-
-//Routes
-
-app.use('/productos', routerProductos);
-
-
-//Ruta Raiz con Formulario
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
 app.get('/', (req, res) => {
-    res.render('form', { title: 'Form' });
-})
-
-// GET productos
-
-routerProductos.get('/', async (req, res) => {
-    const productos = await contenedor.getAll();
-    res.render('productlist',
-        {
-            products: productos,
-            hayProductos: productos.length,
-            title: 'Products'
-        });
+	res.sendFile('index.html', { root: __dirname });
+});
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//* Servidor
+const PORT = process.env.PORT || 8080;
+HTTPserver.listen(PORT, () => {
+	console.log(`Servidor escuchado en el puerto http://localhost:${PORT}`);
 });
 
-// GET productos por id
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//* funciones socket productos
+const enviarProductosSocket = async (socket) => {
+	const productos = await contenedor.getAll();
+	socket.emit('lista productos', productos);
+};
 
-routerProductos.get('/:id', async (req , res) => {
-    const { id } = req.params;
-    const productosId = await contenedor.getById(parseInt(id));
-    if(productosId == null){
-        res.json({error: true, msg:'Producto no encontrado'})
-    } else {
-    res.json(productosId);
-     
-    }
-})
+const guardarProducto = async (nuevoProducto) => {
+	await contenedor.save(nuevoProducto);
+	const productos = await contenedor.getAll();
+	io.sockets.emit('lista productos', productos);
+};
 
-//POST Agrega un producto
+//* funciones socket chat
+const enviarMensajesSocket = async (socket) => {
+	const mensajes = await contenedorMensajes.getAll();
+	socket.emit('lista mensajes', mensajes);
+};
 
-routerProductos.post('/', async (req , res) => {
-    const { body } = req;
-    await contenedor.save(body);
-    res.redirect('/');
-})
+const guardarMensaje = async (nuevoMensaje) => {
+	nuevoMensaje.fecha = new Date().toLocaleString();
+	await contenedorMensajes.save(nuevoMensaje);
+	const mensajes = await contenedorMensajes.getAll();
+	io.sockets.emit('lista mensajes', mensajes);
+};
 
-//PUT actualiza por id
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//* sockets
+io.on('connection', (socket) => {
+	enviarProductosSocket(socket);
+	enviarMensajesSocket(socket);
 
-routerProductos.put('/:id', async (req , res) => {
-    const { id } = req.params;
-    const { nombre, precio, categoria, imagen } = req.body;
-    const updateProducto = await contenedor.updateById(parseInt(id),{nombre,precio,categoria,imagen});
-    res.json({succes:true, product:updateProducto});
-})
+	socket.on('nuevo producto', (newProduct) => {
+		guardarProducto(newProduct);
+	});
+	socket.on('nuevo mensaje', (newMensaje) => {
+		guardarMensaje(newMensaje);
+	});
+});
 
-//DELETE borrar por id
-
-routerProductos.delete('/:id', async (req , res) => {
-    const { id } = req.params;
-    const productoId = await contenedor.getById(parseInt(id));
-    if(productoId !== null){
-        await contenedor.deleteById(parseInt(id));
-        res.json({succes: true, msg: 'Producto eliminado'});        
-    } else {
-        res.json({error: true, msg: 'Producto no encotrado'});
-    }
-}) 
-
-
-// Servidor
-
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {console.log(`Servidor escuchado en el puerto http://localhost:${PORT}`)});
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------//

@@ -1,6 +1,6 @@
 <h1>Vista de Productos</h1>
 
-{{#if hayProductos}}
+{{#if products.length}}
 	<div class='container'>
 		<table class='content-table'>
 			<thead>
@@ -12,14 +12,14 @@
 				</tr>
 			</thead>
 			<tbody>
-			{{#each products}}
-				<tr>
-					<td>{{this.nombre}}</td>
-					<td>{{this.precio}}</td>
-					<td>{{this.categoria}}</td>
-					<td><img width='60' src={{this.thumbnail}} /></td>
-				</tr>
-			{{/each}}
+				{{#each products}}
+					<tr>
+						<td>{{this.nombre}}</td>
+						<td>{{this.precio}}</td>
+						<td>{{this.categoria}}</td>
+						<td><img width='60' src={{this.thumbnail}} /></td>
+					</tr>
+				{{/each}}
 			</tbody>
 		</table>
 	</div>
